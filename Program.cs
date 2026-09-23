@@ -12,8 +12,21 @@ class Program
         Console.WriteLine("--------------------------------------------");
         Console.WriteLine();
 
-        Console.Write("Código del estudiante : ");
-        string codigo = Console.ReadLine() ?? "";
+        string codigo;
+
+        do
+        {
+            Console.Write("Código del estudiante : ");
+            codigo = Console.ReadLine() ?? "";
+
+            if (!ValidarCodigo(codigo))
+            {
+                Console.WriteLine();
+                Console.WriteLine("⚠ El código debe tener al menos 6 caracteres.");
+                Console.WriteLine();
+            }
+
+        } while (!ValidarCodigo(codigo));
 
         Console.Write("Nombre completo       : ");
         string nombre = Console.ReadLine() ?? "";
@@ -34,5 +47,12 @@ class Program
         Console.WriteLine($"Descripción : {descripcion}");
         Console.WriteLine("============================================");
         Console.WriteLine("Registro completado correctamente.");
+    }
+
+    // R2: Valida el código del estudiante.
+    static bool ValidarCodigo(string codigo)
+    {
+        return !string.IsNullOrWhiteSpace(codigo)
+               && codigo.Trim().Length >= 6;
     }
 }
