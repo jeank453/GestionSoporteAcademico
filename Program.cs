@@ -60,6 +60,9 @@ class Program
             Console.Write("Descripción breve     : ");
             string descripcion = Console.ReadLine() ?? "";
 
+            // R5: Asignación de prioridad
+            string prioridad = CalcularPrioridad(tipoConsulta);
+
             Console.WriteLine();
             Console.WriteLine("============================================");
             Console.WriteLine("          ATENCIÓN REGISTRADA");
@@ -68,6 +71,7 @@ class Program
             Console.WriteLine($"Estudiante  : {nombre}");
             Console.WriteLine($"Consulta    : {tipoConsulta}");
             Console.WriteLine($"Descripción : {descripcion}");
+            Console.WriteLine($"Prioridad   : {prioridad}");
             Console.WriteLine("============================================");
             Console.WriteLine("Registro completado correctamente.");
         }
@@ -113,5 +117,24 @@ class Program
                tipo == "constancia" ||
                tipo == "plataforma" ||
                tipo == "otro";
+    }
+
+    // R5: Asigna una prioridad según el tipo de consulta.
+    static string CalcularPrioridad(string tipoConsulta)
+    {
+        string tipo = tipoConsulta.Trim().ToLower();
+
+        if (tipo == "pagos" || tipo == "plataforma")
+        {
+            return "Alta";
+        }
+        else if (tipo == "matrícula")
+        {
+            return "Media";
+        }
+        else
+        {
+            return "Baja";
+        }
     }
 }
