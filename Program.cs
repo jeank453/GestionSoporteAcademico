@@ -34,8 +34,22 @@ class Program
 
             } while (!ValidarCodigo(codigo));
 
-            Console.Write("Nombre completo       : ");
-            string nombre = Console.ReadLine() ?? "";
+            // R6: Validación del nombre
+            string nombre;
+
+            do
+            {
+                Console.Write("Nombre completo       : ");
+                nombre = Console.ReadLine() ?? "";
+
+                if (!ValidarTexto(nombre))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("⚠ El nombre es obligatorio.");
+                    Console.WriteLine();
+                }
+
+            } while (!ValidarTexto(nombre));
 
             // R3: Validación del tipo de consulta
             string tipoConsulta;
@@ -57,8 +71,22 @@ class Program
 
             } while (!ValidarTipoConsulta(tipoConsulta));
 
-            Console.Write("Descripción breve     : ");
-            string descripcion = Console.ReadLine() ?? "";
+            // R6: Validación de la descripción
+            string descripcion;
+
+            do
+            {
+                Console.Write("Descripción breve     : ");
+                descripcion = Console.ReadLine() ?? "";
+
+                if (!ValidarTexto(descripcion))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("⚠ La descripción es obligatoria.");
+                    Console.WriteLine();
+                }
+
+            } while (!ValidarTexto(descripcion));
 
             // R5: Asignación de prioridad
             string prioridad = CalcularPrioridad(tipoConsulta);
@@ -136,5 +164,11 @@ class Program
         {
             return "Baja";
         }
+    }
+
+    // R6: Valida que un texto obligatorio no esté vacío.
+    static bool ValidarTexto(string texto)
+    {
+        return !string.IsNullOrWhiteSpace(texto);
     }
 }
