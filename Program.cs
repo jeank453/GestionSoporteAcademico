@@ -88,20 +88,19 @@ class Program
 
             } while (!ValidarTexto(descripcion));
 
-            // R5: Asignación de prioridad
+            // R5 y R8: Se envía tipoConsulta como parámetro
+            // y la función devuelve la prioridad correspondiente.
             string prioridad = CalcularPrioridad(tipoConsulta);
 
-            Console.WriteLine();
-            Console.WriteLine("============================================");
-            Console.WriteLine("          ATENCIÓN REGISTRADA");
-            Console.WriteLine("============================================");
-            Console.WriteLine($"Código      : {codigo}");
-            Console.WriteLine($"Estudiante  : {nombre}");
-            Console.WriteLine($"Consulta    : {tipoConsulta}");
-            Console.WriteLine($"Descripción : {descripcion}");
-            Console.WriteLine($"Prioridad   : {prioridad}");
-            Console.WriteLine("============================================");
-            Console.WriteLine("Registro completado correctamente.");
+            // R7 y R8: Se pasan los datos como parámetros
+            // a la función que muestra el resumen.
+            MostrarResumen(
+                codigo,
+                nombre,
+                tipoConsulta,
+                descripcion,
+                prioridad
+            );
         }
         else if (opcion == "2")
         {
@@ -147,7 +146,8 @@ class Program
                tipo == "otro";
     }
 
-    // R5: Asigna una prioridad según el tipo de consulta.
+    // R5 y R8: Recibe el tipo de consulta como parámetro
+    // y devuelve la prioridad correspondiente.
     static string CalcularPrioridad(string tipoConsulta)
     {
         string tipo = tipoConsulta.Trim().ToLower();
@@ -170,5 +170,26 @@ class Program
     static bool ValidarTexto(string texto)
     {
         return !string.IsNullOrWhiteSpace(texto);
+    }
+
+    // R7 y R8: Recibe los datos de la atención mediante parámetros
+    // para mostrar el resumen correspondiente.
+    static void MostrarResumen(
+        string codigo,
+        string nombre,
+        string tipoConsulta,
+        string descripcion,
+        string prioridad)
+    {
+        Console.WriteLine();
+        Console.WriteLine("╔══════════════════════════════════════════╗");
+        Console.WriteLine("║             RESUMEN DE ATENCIÓN         ║");
+        Console.WriteLine("╠══════════════════════════════════════════╣");
+        Console.WriteLine($"║ Código      : {codigo}");
+        Console.WriteLine($"║ Estudiante  : {nombre}");
+        Console.WriteLine($"║ Consulta    : {tipoConsulta}");
+        Console.WriteLine($"║ Descripción : {descripcion}");
+        Console.WriteLine($"║ Prioridad   : {prioridad}");
+        Console.WriteLine("╚══════════════════════════════════════════╝");
     }
 }
