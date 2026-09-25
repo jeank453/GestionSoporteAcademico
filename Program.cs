@@ -89,11 +89,11 @@ class Program
             } while (!ValidarTexto(descripcion));
 
             // R5 y R8: Se envía tipoConsulta como parámetro
-            // y la función devuelve la prioridad correspondiente.
+            // y se obtiene la prioridad correspondiente.
             string prioridad = CalcularPrioridad(tipoConsulta);
 
-            // R7 y R8: Se pasan los datos como parámetros
-            // a la función que muestra el resumen.
+            // R7: Se muestra el resumen completo de la atención.
+            // R8: Los datos se pasan como parámetros.
             MostrarResumen(
                 codigo,
                 nombre,
@@ -172,8 +172,8 @@ class Program
         return !string.IsNullOrWhiteSpace(texto);
     }
 
-    // R7 y R8: Recibe los datos de la atención mediante parámetros
-    // para mostrar el resumen correspondiente.
+    // R7: Muestra el resumen de la atención.
+    // R8: Recibe los datos mediante parámetros.
     static void MostrarResumen(
         string codigo,
         string nombre,
