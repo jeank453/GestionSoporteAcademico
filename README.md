@@ -23,3 +23,6 @@ El proyecto implementará los requisitos R1 al R12 mediante funciones, validacio
 - .NET
 - Git
 - GitHub
+
+## R11 - Registro de pruebas
+Las pruebas del sistema fueron realizadas con datos validos e invalidos para comprobar las validaciones, prioridades y registro de multiples atenciones.
