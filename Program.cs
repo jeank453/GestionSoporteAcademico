@@ -17,7 +17,8 @@ class Program
             Console.WriteLine("╚══════════════════════════════════════════╝");
             Console.WriteLine();
 
-            // R2: Validación del código
+            // R2 y R9:
+            // La variable codigo es local a Main.
             string codigo;
 
             do
@@ -34,7 +35,8 @@ class Program
 
             } while (!ValidarCodigo(codigo));
 
-            // R6: Validación del nombre
+            // R6 y R9:
+            // La variable nombre es local a Main.
             string nombre;
 
             do
@@ -51,7 +53,8 @@ class Program
 
             } while (!ValidarTexto(nombre));
 
-            // R3: Validación del tipo de consulta
+            // R3 y R9:
+            // La variable tipoConsulta es local a Main.
             string tipoConsulta;
 
             do
@@ -71,7 +74,8 @@ class Program
 
             } while (!ValidarTipoConsulta(tipoConsulta));
 
-            // R6: Validación de la descripción
+            // R6 y R9:
+            // La variable descripcion es local a Main.
             string descripcion;
 
             do
@@ -88,12 +92,12 @@ class Program
 
             } while (!ValidarTexto(descripcion));
 
-            // R5 y R8: Se envía tipoConsulta como parámetro
-            // y se obtiene la prioridad correspondiente.
+            // R5, R8 y R9:
+            // La variable prioridad es local a Main.
             string prioridad = CalcularPrioridad(tipoConsulta);
 
-            // R7: Se muestra el resumen completo de la atención.
-            // R8: Los datos se pasan como parámetros.
+            // R7 y R8:
+            // Los datos se pasan como parámetros.
             MostrarResumen(
                 codigo,
                 nombre,
@@ -114,7 +118,9 @@ class Program
         }
     }
 
-    // R4: Muestra el menú principal.
+    // R4 y R9:
+    // Esta función no utiliza variables globales.
+    // Las variables que utiliza tienen alcance local.
     static void MostrarMenu()
     {
         Console.WriteLine();
@@ -146,10 +152,13 @@ class Program
                tipo == "otro";
     }
 
-    // R5 y R8: Recibe el tipo de consulta como parámetro
+    // R5 y R8:
+    // Recibe el tipo de consulta como parámetro
     // y devuelve la prioridad correspondiente.
     static string CalcularPrioridad(string tipoConsulta)
     {
+        // R9:
+        // La variable tipo tiene alcance local dentro de esta función.
         string tipo = tipoConsulta.Trim().ToLower();
 
         if (tipo == "pagos" || tipo == "plataforma")
@@ -166,14 +175,16 @@ class Program
         }
     }
 
-    // R6: Valida que un texto obligatorio no esté vacío.
+    // R6 y R9:
+    // El parámetro texto tiene alcance local dentro de esta función.
     static bool ValidarTexto(string texto)
     {
         return !string.IsNullOrWhiteSpace(texto);
     }
 
-    // R7: Muestra el resumen de la atención.
-    // R8: Recibe los datos mediante parámetros.
+    // R7 y R8:
+    // Recibe los datos mediante parámetros.
+    // R9: Los parámetros tienen alcance local en esta función.
     static void MostrarResumen(
         string codigo,
         string nombre,
